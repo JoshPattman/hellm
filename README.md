@@ -138,7 +138,7 @@ Choose one of the following methods:
 
 #### Option A: Download .vsix File (Works with Binary Download) 📥
 
-1. Download `hellm-extension.vsix` from the [releases page](https://github.com/your-repo/hellm/releases) 📂
+1. Download `hellm-extension.vsix` from the [releases page](https://github.com/JoshPattman/hellm/releases) 📂
 2. Install in your editor: ⚙️
    - Open Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
    - Run "Extensions: Install from VSIX..."
