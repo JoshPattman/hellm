@@ -88,31 +88,69 @@ print msg;
 
 Follow these steps to get HeLLM up and running: 🏃‍♂️💨
 
-1. **Be on Unix** 🐧💻  
-   Sorry, Windows users – HeLLM only installs using the makefile on Unix-like systems. 😢 You can probably install manually though. 🛠️
+### Step 1: Set Your OpenAI API Key 🔑🌍
 
-2. **Set Your OPENAI_KEY Environment Variable** 🔑🌍  
-   HeLLM needs access to an OpenAI API key. 🤖 Set your `OPENAI_KEY` environment variable in your shell: 💻
+HeLLM needs access to an OpenAI API key. 🤖 Set your `OPENAI_KEY` environment variable in your shell: 💻
+```
+export OPENAI_KEY=sk-...
+```
+(Replace `sk-...` with your actual OpenAI API key, so you can track how much money you are ~~wasting~~ enjoying.) 💸😄
+
+### Step 2: Get the HeLLM Binary 📦💾
+
+Choose one of the following methods:
+
+#### Option A: Download Pre-built Binary (Recommended) 📥⚡
+
+The easiest way – no compilation required! 🎉
+
+1. **Download the Binary** 🌍  
+   Head to the [releases page](https://github.com/your-repo/hellm/releases) and download the appropriate binary for your system:
+   - **Linux**: `hellm-linux`
+   - **macOS**: `hellm-mac` 
+   - **Windows**: `hellm-windows.exe`
+
+2. **Make Executable & Install** (Linux/Mac only) 🔧  
    ```
-   export OPENAI_KEY=sk-...
+   chmod +x hellm-linux  # or hellm-mac
+   sudo mv hellm-linux /usr/local/bin/hellm  # Linux
+   sudo mv hellm-mac /usr/local/bin/hellm    # macOS
    ```
-   (Replace `sk-...` with your actual OpenAI API key, so you can track how much money you are ~~wasting~~ enjoying.) 💸😄
+   > For windows users, ask ChatGPT how to do this.
 
-3. **Install Go** 🐹⚡  
-   You'll need Go (Golang) installed. 📦 If you don't know how, I'm sure ChatGPT can help. 🤖💭
+#### Option B: Build from Source 🔨⚙️
 
-4. **Install the HeLLM Tool** 🔧⚙️  
-   Open your terminal and run: 💻
+For the brave souls who want to compile everything themselves: 💪
+
+1. **Prerequisites** 🐧💻  
+   - Be on Unix (sorry Windows users – makefile only works on Unix-like systems 😢)
+   - Install Go (Golang) 🐹⚡ If you don't know how, I'm sure ChatGPT can help. 🤖💭
+
+2. **Build & Install** 🔧⚙️  
    ```
    make tool
    ```
    This will build the HeLLM tool and install it to `/usr/local/bin`. 📁✅
 
-5. **Install the VSCode/Cursor Extension** 🧩💻  
-   Still in your terminal, run: ⌨️
-   ```
-   make extension
-   ```
-   This will copy the extension to your VSCode and Cursor extensions folders. 📂🎯
+### Step 3: Install the VSCode/Cursor Extension 🧩💻
+
+Choose one of the following methods:
+
+#### Option A: Download .vsix File (Works with Binary Download) 📥
+
+1. Download `hellm-extension.vsix` from the [releases page](https://github.com/your-repo/hellm/releases) 📂
+2. Install in your editor: ⚙️
+   - Open Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
+   - Run "Extensions: Install from VSIX..."
+   - Select the downloaded `hellm-extension.vsix` file 🎯
+
+#### Option B: Build Extension (When Building from Source) 🔨
+
+```
+make extension
+```
+This will copy the extension to your VSCode and Cursor extensions folders. 📂🎯
+
+---
 
 That's it! 🎉 You're ready to write the most exciting and expensive code of your life! 💰🔥 If you need to see the subcommands of hellm, run `hellm help`. 📖❓

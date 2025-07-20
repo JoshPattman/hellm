@@ -14,5 +14,6 @@ final-build:
 	mkdir bin
 	cd vscode/hellm; vsce package
 	mv vscode/hellm/hellm-0.0.1.vsix bin/
-	go build -o bin/hellm .
-	GOOS=windows GOARCH=amd64 go build -o bin/hellm.exe .
+	GOOS=darwin GOARCH=amd64 go build -o bin/hellm-mac .
+	GOOS=linux GOARCH=amd64 go build -o bin/hellm-linux .
+	GOOS=windows GOARCH=amd64 go build -o bin/hellm-windows.exe .
