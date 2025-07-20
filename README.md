@@ -105,7 +105,7 @@ Choose one of the following methods:
 The easiest way – no compilation required! 🎉
 
 1. **Download the Binary** 🌍  
-   Head to the [releases page](https://github.com/your-repo/hellm/releases) and download the appropriate binary for your system:
+   Head to the [releases page](https://github.com/JoshPattman/hellm/releases) and download the appropriate binary for your system:
    - **Linux**: `hellm-linux`
    - **macOS**: `hellm-mac` 
    - **Windows**: `hellm-windows.exe`
