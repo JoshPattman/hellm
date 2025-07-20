@@ -1,16 +1,13 @@
 {
-  "name": "hllm",
+  "name": "hellm",
   "displayName": "HeLLM",
   "description": "Language support for the HeLLM language",
   "version": "0.0.1",
+  "repository": "https://github.com/JoshPattman/hellm",
   "engines": {
     "vscode": "^1.87.0"
   },
   "main": "./extension.js",
-  "activationEvents": [
-    "onLanguage:hellm",
-    "*"
-  ],
   "icon": "./icon.png",
   "categories": [
     "Programming Languages",
