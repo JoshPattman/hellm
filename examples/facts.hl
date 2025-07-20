@@ -1,0 +1,30 @@
+
+com "To run this script, provide the first argument as a comma seperated list of things, e.g. `hellm run facts.hl dogs,cats,tigers`";
+
+fn create_fact topic {
+    let fact = "A fact about the topic";
+    return fact;
+}
+
+
+fn format_fact_as_json topic fact {
+    let formatted = "Format the given fact as a json object. It should have two keys, a topic key and a fact key. DO NOT INCLUDE ANY OTHER TEXT EXCEPT FOR THE JSON. DO NOT INCLUDE A CODE BLOCK!";
+    return formatted;
+}
+
+
+fn create_fact_json topic {
+    run fact = create_fact topic;
+    run formatted_fact = format_fact_as_json topic fact;
+    return formatted_fact;
+}
+
+use topics = 0;
+while "The variable topics is not empty" {
+    let topic = "The first topic in the topics variable";
+    let topics = "The topics list, with the topic in the topic variable omitted";
+    run fact_json = create_fact_json topic;
+    print fact_json;
+}
+let msg = "exact text: Done";
+print msg;
