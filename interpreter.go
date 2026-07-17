@@ -183,6 +183,9 @@ func interpretNode(code ASTNode, args []string, stdout io.Writer, scope *Scope) 
 	case LetNode:
 		err := interpretLet(code, scope)
 		return nil, err
+	case ConstNode:
+		err := interpretConst(code, scope)
+		return nil, err
 	case UseNode:
 		err := interpretUse(code, scope, args)
 		return nil, err
@@ -234,6 +237,11 @@ func interpretLet(n LetNode, scope *Scope) error {
 		return fmt.Errorf("error interpreting let node: %w", err)
 	}
 	scope.Set(n.Ident, strings.TrimSpace(resp.Content))
+	return nil
+}
+
+func interpretConst(n ConstNode, scope *Scope) error {
+	scope.Set(n.Ident, n.Value)
 	return nil
 }
 

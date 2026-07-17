@@ -4,9 +4,10 @@ tool:
 	go build -o hellm .
 	chmod +x hellm
 	mv hellm /usr/local/bin
-extension:
+vscode-extension:
 	rm -rf ~/.vscode/extensions/hellm
 	cp -r ./vscode/hellm ~/.vscode/extensions/hellm
+cursor-extension:
 	rm -rf ~/.cursor/extensions/hellm
 	cp -r ./vscode/hellm ~/.cursor/extensions/hellm
 final-build:

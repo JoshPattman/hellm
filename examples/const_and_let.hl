@@ -1,0 +1,9 @@
+
+com "This script shows the difference between let and const";
+
+com "Const does not run an LLM - it just sets a value. You can however use this to set soped instructions.";
+const calculation_instruction = "When I provide you with maths, you will perform the calculation and return just the result.";
+let x = "5 + 4";
+const y = "5 + 4";
+print x;
+print y;

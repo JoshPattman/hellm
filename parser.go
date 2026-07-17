@@ -15,6 +15,11 @@ type LetNode struct {
 	Value string
 }
 
+type ConstNode struct {
+	Ident string
+	Value string
+}
+
 type UseNode struct {
 	Ident string
 	ArgID int
@@ -61,6 +66,9 @@ type FuncDefNode struct {
 
 func (n LetNode) Format(indent string) string {
 	return fmt.Sprintf("%slet %s = \"%s\";", indent, n.Ident, n.Value)
+}
+func (n ConstNode) Format(indent string) string {
+	return fmt.Sprintf("%sconst %s = \"%s\";", indent, n.Ident, n.Value)
 }
 func (n UseNode) Format(indent string) string {
 	return fmt.Sprintf("%suse %s = %d;", indent, n.Ident, n.ArgID)
@@ -202,6 +210,7 @@ func parseNodesUntilNoMoreParse(tokens []LexToken) ([]ASTNode, []LexToken) {
 func tryParseNode(tokens []LexToken) (ASTNode, []LexToken, bool) {
 	parseFuncs := []func([]LexToken) (ASTNode, []LexToken, bool){
 		tryParseLet,
+		tryParseConst,
 		tryParseUse,
 		tryParseIf,
 		tryParseFuncDef,
@@ -237,6 +246,18 @@ func tryParseLet(tokens []LexToken) (ASTNode, []LexToken, bool) {
 	value := &StringLexToken{}
 	if ok, rest := patternMatch(tokens, &LetLexToken{}, ident, &EqLexToken{}, value, &SemiColonLexToken{}); ok {
 		return LetNode{
+			Ident: ident.Name,
+			Value: value.Value,
+		}, rest, true
+	}
+	return nil, nil, false
+}
+
+func tryParseConst(tokens []LexToken) (ASTNode, []LexToken, bool) {
+	ident := &IdentLexToken{}
+	value := &StringLexToken{}
+	if ok, rest := patternMatch(tokens, &ConstLexToken{}, ident, &EqLexToken{}, value, &SemiColonLexToken{}); ok {
+		return ConstNode{
 			Ident: ident.Name,
 			Value: value.Value,
 		}, rest, true

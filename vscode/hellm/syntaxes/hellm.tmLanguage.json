@@ -33,7 +33,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.hellm",
-					"match": "\\b(while|let|if|use|else|print|del|run|fn|return)\\b"
+					"match": "\\b(while|let|const|if|use|else|print|del|run|fn|return)\\b"
 				}
 			]
 		},

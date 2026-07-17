@@ -11,6 +11,7 @@ type LexToken interface {
 }
 
 type LetLexToken struct{}
+type ConstLexToken struct{}
 type UseLexToken struct{}
 type FnLexToken struct{}
 type IdentLexToken struct {
@@ -37,6 +38,16 @@ func (t *LetLexToken) Copy(tokens []LexToken) (int, bool) {
 		return 0, false
 	}
 	_, ok := tokens[0].(*LetLexToken)
+	if !ok {
+		return 0, false
+	}
+	return 1, true
+}
+func (t *ConstLexToken) Copy(tokens []LexToken) (int, bool) {
+	if len(tokens) < 1 {
+		return 0, false
+	}
+	_, ok := tokens[0].(*ConstLexToken)
 	if !ok {
 		return 0, false
 	}
@@ -236,6 +247,8 @@ func FormatLexToken(token LexToken) string {
 	switch t := token.(type) {
 	case *LetLexToken:
 		return purple + "let" + reset
+	case *ConstLexToken:
+		return purple + "const" + reset
 	case *UseLexToken:
 		return purple + "use" + reset
 	case *FnLexToken:
@@ -288,6 +301,7 @@ func readToNextChar(s string) string {
 func readLexToken(s string) (LexToken, string, error) {
 	readFuncs := []func(string) (LexToken, string, bool){
 		readLet,
+		readConst,
 		readUse,
 		readFn,
 		readPrint,
@@ -322,6 +336,14 @@ func readLet(s string) (LexToken, string, bool) {
 	if strings.HasPrefix(s, "let ") {
 		s = strings.TrimPrefix(s, "let")
 		return &LetLexToken{}, s, true
+	}
+	return nil, s, false
+}
+
+func readConst(s string) (LexToken, string, bool) {
+	if strings.HasPrefix(s, "const ") {
+		s = strings.TrimPrefix(s, "const")
+		return &ConstLexToken{}, s, true
 	}
 	return nil, s, false
 }
